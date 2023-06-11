@@ -15,10 +15,11 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
-  const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password, confirmPassword } = formFields;
 
-  console.log(formFields);
+
+  const [formFields, setFormFields] = useState(defaultFormFields);
+
+  const { displayName, email, password, confirmPassword } = formFields;
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -38,7 +39,7 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
+      if (error.code == "auth/email-already-in-use") {
         alert("Cannot create user, email already in use");
       } else {
         console.log("User creation encountered an error", error);
@@ -46,8 +47,11 @@ const SignUpForm = () => {
     }
   };
 
+//   This handle change function takes in event of when the text changes
   const handleChange = (event) => {
+    // we are going to utilize the name to tell the set state which of the fields in the formFeilds to update 
     const { name, value } = event.target;
+            // the .target will give all the things attached to the FormInput not just the event
 
     setFormFields({ ...formFields, [name]: value });
   };
