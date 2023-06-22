@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import Button from '../button/button.component'
 import './product-card.styles.scss'
+import { CartContext } from '../../contexts/cart.context';
 
 
 //({ product })  product is the value that you passing in
@@ -8,8 +10,9 @@ import './product-card.styles.scss'
 const ProductCard = ({ product }) => {
 // Once you get the product, we are going to destructure the product, meaning that these are the values that we want to get from product
      const { name, price, imageUrl} = product;
-    
+     const { addItemToCart } = useContext(CartContext)
    
+     const addProductToCart = () => addItemToCart(product)
 
         {/* images need an alt text, for screen readers */}
         return (<div className='product-card-container'>
@@ -19,7 +22,7 @@ const ProductCard = ({ product }) => {
                 <span className='name'>{name}</span>
                 <span className='price'>{price}</span>
         </div>
-        <Button buttonType='inverted'>Add To Cart</Button>
+        <Button buttonType='inverted' onClick={addProductToCart}>Add To Cart</Button>
     </div>)
 }
 
