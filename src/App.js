@@ -5,6 +5,7 @@ import Navigation from './routes/navigation/navigation.component';
 import Shop from './routes/shop/shop.component';
 import Authentication from './routes/authentication/authentication.component';
 import Contact from './routes/contact/contact.component';
+import CheckOut from './routes/checkout/checkout.component';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path='shop' element={<Shop />}></Route>
         <Route path='auth' element={<Authentication />}></Route>
         <Route path='contact' element={<Contact />}></Route>
+        <Route path='checkout' element={<CheckOut />}></Route>
 
       </Route>
     </Routes>
